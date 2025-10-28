@@ -1,0 +1,5 @@
+#DB_HOST = 'localhost'
+DB_HOST = 'host.docker.internal'
+DB_NAME = 'fast_api'
+DB_USER = 'admin'
+DB_PASSWORD = 'password'
