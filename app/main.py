@@ -144,7 +144,7 @@ async def get_games(db: AsyncSession = Depends(get_db)):
     ]
 
 @app.get("/players/{player_sid}/stats")
-async def get_games(player_sid: int, db: AsyncSession = Depends(get_db)):
+async def get_player_stats(player_sid: int, db: AsyncSession = Depends(get_db)):
 
     player = await db.execute(select(Player).where(Player.id == player_sid))
     player = player.scalar_one_or_none()
@@ -402,3 +402,4 @@ async def end_game(websocket: WebSocket, game_id: int, db: AsyncSession):
     await manager.broadcast(json.dumps(message), game_id)
 
     return
+
