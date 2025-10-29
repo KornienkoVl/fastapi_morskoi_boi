@@ -353,7 +353,7 @@ async def move(websocket: WebSocket, game_id: int, player_id: int, message: dict
 
     await db.commit()
     await db.refresh(game)
-    print("commit")
+
     #Посылаем сообщение
     message = {
         "type": "move_result",
@@ -361,7 +361,7 @@ async def move(websocket: WebSocket, game_id: int, player_id: int, message: dict
         "kill": kill,
         "game_over": game_over
     }
-    print("msg")
+
     await manager.broadcast(json.dumps(message), game_id)
     return
 
@@ -400,4 +400,5 @@ async def end_game(websocket: WebSocket, game_id: int, db: AsyncSession):
         }
     
     await manager.broadcast(json.dumps(message), game_id)
+
     return
