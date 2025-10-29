@@ -269,7 +269,6 @@ async def get_game_desk(game_id: int, db: AsyncSession):
 #Разделяем доски игроков
 async def process_game_data(game_id: int, db: AsyncSession):
 
-    print("process_game")
     game_desk = await get_game_desk(game_id, db)
        
     player1_data = game_desk["player1"]
@@ -402,4 +401,5 @@ async def end_game(websocket: WebSocket, game_id: int, db: AsyncSession):
     await manager.broadcast(json.dumps(message), game_id)
 
     return
+
 
